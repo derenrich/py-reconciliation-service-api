@@ -1,0 +1,27 @@
+
+token.sh
+
+__pycache__/
+build/
+dist/
+*.egg-info/
+*.pyc
+.pytest_cache/
+
+# pyenv
+.python-version
+
+# Environments
+.env
+.venv
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# JetBrains
+.idea/
+
+/coverage.xml
+/.coverage
