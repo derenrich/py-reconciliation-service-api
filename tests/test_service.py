@@ -33,10 +33,7 @@ def test_sf(service):
 
 
 def test_multiple(service):
-    query = [
-        {"query": "trump", "limit": 5},
-        {"query": "sf", "limit": 6}
-    ]
+    query = [{"query": "trump", "limit": 5}, {"query": "sf", "limit": 6}]
     candidates = service.reconcile_batch(query)
     assert len(candidates) == 2
     assert len(candidates[0].result) == 5

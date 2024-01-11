@@ -1,5 +1,8 @@
 from py_reconciliation_service_api.models.manifest import Manifest
-from py_reconciliation_service_api.models.reconciliation import BatchReconciliationQuery, BatchReconciliationResult
+from py_reconciliation_service_api.models.reconciliation import (
+    BatchReconciliationQuery,
+    BatchReconciliationResult,
+)
 
 
 # from https://wikidata.reconci.link/en/api
@@ -11,7 +14,7 @@ EXAMPLE_MANIFEST = """
 def test_manifest():
     manifest = Manifest.model_validate_json(EXAMPLE_MANIFEST)
     assert manifest.name == "Wikidata reconci.link (en)"
-    assert '0.2' in manifest.versions
+    assert "0.2" in manifest.versions
 
 
 SIMPLE_EXAMPLE_QUERY = """
@@ -29,8 +32,8 @@ SIMPLE_EXAMPLE_QUERY = """
 def test_simple_query():
     query = BatchReconciliationQuery.model_validate_json(SIMPLE_EXAMPLE_QUERY)
     assert len(query.root) == 2
-    assert query.root['q1'].query == "Hans-Eberhard Urbaniak"
-    assert query.root['q2'].query == "Ernst Schwanhold"
+    assert query.root["q1"].query == "Hans-Eberhard Urbaniak"
+    assert query.root["q2"].query == "Ernst Schwanhold"
 
 
 EXAMPLE_QUERY = """
@@ -41,11 +44,11 @@ EXAMPLE_QUERY = """
 def test_array_property_value_query():
     query = BatchReconciliationQuery.model_validate_json(EXAMPLE_QUERY)
     assert len(query.root) == 1
-    assert query.root['q0'].type == "DifferentiatedPerson"
-    assert query.root['q0'].limit == 5
-    assert query.root['q0'].query == "Christel Hanewinckel"
-    assert query.root['q0'].properties[0].v[0] == "Politik*"
-    assert query.root['q0'].properties[0].v[1].name == "Wissenschaftler(in)"
+    assert query.root["q0"].type == "DifferentiatedPerson"
+    assert query.root["q0"].limit == 5
+    assert query.root["q0"].query == "Christel Hanewinckel"
+    assert query.root["q0"].properties[0].v[0] == "Politik*"
+    assert query.root["q0"].properties[0].v[1].name == "Wissenschaftler(in)"
 
 
 COMPLEX_EXAMPLE_QUERY = """
@@ -89,27 +92,27 @@ COMPLEX_EXAMPLE_QUERY = """
 def test_complex_query():
     query = BatchReconciliationQuery.model_validate_json(COMPLEX_EXAMPLE_QUERY)
     assert len(query.root) == 2
-    assert query.root['q0'].type == "DifferentiatedPerson"
-    assert query.root['q0'].limit == 5
-    assert query.root['q0'].query == "Christel Hanewinckel"
-    assert query.root['q0'].properties[0].v == "Politik*"
-    assert query.root['q0'].properties[1].v == "http://d-nb.info/gnd/2022139-3"
-    assert query.root['q1'].type == "DifferentiatedPerson"
-    assert query.root['q1'].limit == 5
-    assert query.root['q1'].query == "Franz Thönnes"
-    assert query.root['q1'].properties[0].v == "Politik*"
-    assert query.root['q1'].properties[1].v == "http://d-nb.info/gnd/2022139-3"
-    assert query.root['q0'].type_strict == "should"
-    assert query.root['q1'].type_strict == "any"
+    assert query.root["q0"].type == "DifferentiatedPerson"
+    assert query.root["q0"].limit == 5
+    assert query.root["q0"].query == "Christel Hanewinckel"
+    assert query.root["q0"].properties[0].v == "Politik*"
+    assert query.root["q0"].properties[1].v == "http://d-nb.info/gnd/2022139-3"
+    assert query.root["q1"].type == "DifferentiatedPerson"
+    assert query.root["q1"].limit == 5
+    assert query.root["q1"].query == "Franz Thönnes"
+    assert query.root["q1"].properties[0].v == "Politik*"
+    assert query.root["q1"].properties[1].v == "http://d-nb.info/gnd/2022139-3"
+    assert query.root["q0"].type_strict == "should"
+    assert query.root["q1"].type_strict == "any"
 
 
 def test_batch_reconciliation_result():
     json = open("tests/batch_reconciliation_result.json", "r").read()
     result = BatchReconciliationResult.model_validate_json(json)
     assert len(result.root) == 2
-    assert len(result.root['q1'].result) == 2
-    assert len(result.root['q2'].result) == 2
+    assert len(result.root["q1"].result) == 2
+    assert len(result.root["q2"].result) == 2
 
-    assert len(result.root['q2'].result[1].type) == 2
-    assert result.root['q2'].result[1].match is False
-    assert result.root['q2'].result[1].name == "Schwanhold, Nadine"
+    assert len(result.root["q2"].result[1].type) == 2
+    assert result.root["q2"].result[1].match is False
+    assert result.root["q2"].result[1].name == "Schwanhold, Nadine"
