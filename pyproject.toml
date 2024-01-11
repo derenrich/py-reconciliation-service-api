@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "py-reconciliation-service-api"
+version = "0.1.0"
+description = "Python client for the Reconciliation Service API"
+authors = ["Daniel Erenrich <daniel@erenrich.net>"]
+readme = "README.md"
+packages = [{ include = "py_reconciliation_service_api" }]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pydantic = "^2.5.3"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
