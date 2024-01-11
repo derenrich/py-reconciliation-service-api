@@ -45,3 +45,6 @@ class Manifest(BaseSchema):
     preview: Optional[PreviewManifest] = None
     suggest: Optional[SuggestServiceManifest] = None
     batch_size: Optional[int] = None
+    # TODO:
+    #  - extend is not yet supported
+    #  - authentication is not yet supported
