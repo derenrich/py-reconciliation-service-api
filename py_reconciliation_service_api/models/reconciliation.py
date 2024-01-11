@@ -1,8 +1,9 @@
-from typing import Dict, List, Union, Optional
-from typing import Literal
-from . import BaseSchema
-from pydantic.types import PositiveInt
+from typing import Dict, List, Literal, Optional, Union
+
 from pydantic import RootModel
+from pydantic.types import PositiveInt
+
+from . import BaseSchema
 
 
 class CompositePropertyValue(BaseSchema):

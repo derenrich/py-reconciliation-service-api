@@ -3,8 +3,17 @@ name = "py-reconciliation-service-api"
 version = "0.1.0"
 description = "Python client for the Reconciliation Service API"
 authors = ["Daniel Erenrich <daniel@erenrich.net>"]
+license = "GPL-3.0-or-later"
 readme = "README.md"
 packages = [{ include = "py_reconciliation_service_api" }]
+
+classifiers = ["Topic :: Internet :: WWW/HTTP"]
+keywords = ["reconciliation", "api", "client"]
+
+[tool.poetry.urls]
+Homepage = "https://github.com/derenrich/py-reconciliation-service-api"
+Repository = "https://github.com/derenrich/py-reconciliation-service-api.git"
+Issues = "https://github.com/derenrich/py-reconciliation-service-api/issues"
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -19,3 +28,7 @@ ruff = "^0.1.11"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+select = ["F", "I"]
+line-length = 120

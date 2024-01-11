@@ -1,5 +1,6 @@
-from py_reconciliation_service_api import build_reconciliation_service
 from pytest import fixture
+
+from py_reconciliation_service_api import build_reconciliation_service
 
 
 @fixture(scope="module")
