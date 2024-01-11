@@ -52,6 +52,25 @@ class ReconciliationService:
             out.append(batch_result.root[f"q{i}"])
         return out
 
+    async def reconcile_async(self, query: ReconciliationQuery) -> ReconciliationResult:
+        return (await self.reconcile_batch_async([query]))[0]
+
+    async def reconcile_batch_async(self, query: List[ReconciliationQuery]) -> List[ReconciliationResult]:
+        queries = {f"q{i}": q for i, q in enumerate(query)}
+        client = await self._get_async_client()
+        batch_query = BatchReconciliationQuery.model_validate(queries)
+        batch_query_json = batch_query.model_dump_json(exclude_none=True)
+        resp = await client.post(self._base_url, data={"queries": batch_query_json})
+        if resp.status_code != 200:
+            raise Exception(f"Could not reconcile batch: {resp.status_code} {resp.text}")
+        batch_result = BatchReconciliationResult.model_validate(resp.json())
+        out = []
+        for i in range(len(query)):
+            if f"q{i}" not in batch_result.root:
+                raise Exception(f"Missing result for query q{i}")
+            out.append(batch_result.root[f"q{i}"])
+        return out
+
 
 def build_reconciliation_service(base_url: str, *, httpx_args: Dict[str, Any] = {}) -> "ReconciliationService":
     client = httpx.Client(**httpx_args)

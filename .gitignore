@@ -1,6 +1,4 @@
 
-token.sh
-
 __pycache__/
 build/
 dist/
