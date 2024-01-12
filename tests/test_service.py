@@ -1,5 +1,6 @@
-from pytest import fixture
 import pytest
+from pytest import fixture
+
 from py_reconciliation_service_api import build_reconciliation_service
 
 
@@ -103,7 +104,7 @@ def test_geonames(geonames_service):
 def test_globalnames(globalnames_service):
     candidates = globalnames_service.reconcile({"query": "Homo sapiens", "limit": 5})
     assert len(candidates.result) == 3
-    assert candidates.result[0].id == '7db4f8a2-aafe-56b6-8838-89522c67d9f0'
+    assert candidates.result[0].id == "7db4f8a2-aafe-56b6-8838-89522c67d9f0"
     assert candidates.result[0].name.startswith("Homo sapiens Linnaeus")
 
 
