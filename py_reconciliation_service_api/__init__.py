@@ -79,7 +79,8 @@ def build_reconciliation_service(base_url: str, *, httpx_args: Dict[str, Any] = 
     if manifest_resp.status_code != 200:
         raise Exception(f"Could not fetch manifest from {base_url}: {manifest_resp.status_code} {manifest_resp.text}")
 
-    if manifest_resp.headers.get("content-type") != "application/json":
+    content_type = manifest_resp.headers.get("content-type") or ""
+    if not content_type.startswith("application/json"):
         raise Exception(
             f"Manifest from {base_url} has unexpected content type: {manifest_resp.headers.get('content-type')}"
         )

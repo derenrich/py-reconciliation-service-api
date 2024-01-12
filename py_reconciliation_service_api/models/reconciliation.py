@@ -42,7 +42,7 @@ class ReconciliationType(BaseSchema):
 
 
 class ReconciliationCandidate(BaseSchema):
-    id: str
+    id: Union[str, int]
     name: str
     score: float
     features: Optional[List[ReconciliationFeature]] = None
