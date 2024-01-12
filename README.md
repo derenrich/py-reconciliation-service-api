@@ -1,10 +1,14 @@
 Python Reconciliation Service API
 =================================
 
-This is a python implementation of the [Reconciliation Service API v0.2](https://w3c.github.io/cg-reports/reconciliation/CG-FINAL-specs-0.2-20230410/).
+This is a python implementation of the [Reconciliation Service API v0.2](https://w3c.github.io/cg-reports/reconciliation/CG-FINAL-specs-0.2-20230410/). It is [available on pypi](https://pypi.org/project/py-reconciliation-service-api/).
 
-It does not support all methods or utilities of the API including authentication.
+It does not support all methods or utilities of the API including authentication. 
 
+
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/py-reconciliation-service-api)
+![PyPI - Format](https://img.shields.io/pypi/format/py-reconciliation-service-api)
+[![PyPI - License](https://img.shields.io/pypi/l/py-reconciliation-service-api.svg)](https://pypi.python.org/pypi/py-reconciliation-service-api/)
 
 Usage
 -----
